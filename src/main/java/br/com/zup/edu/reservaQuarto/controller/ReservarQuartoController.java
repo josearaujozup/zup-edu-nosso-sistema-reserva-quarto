@@ -34,7 +34,7 @@ public class ReservarQuartoController {
 	@Transactional
     public ResponseEntity<?> cadastrar(@PathVariable("id") Long idQuarto, @RequestBody @Valid ReservaDTO request, UriComponentsBuilder uriComponentsBuilder){
 		
-		Quarto quarto = quartoRepository.findById(idQuarto).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Quarto não encontrado"));
+		Quarto quarto = quartoRepository.findById(idQuarto).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Quarto não cadastrado"));
 		
 		if(quarto.isReservado()) {
     		throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,"quarto já reservado");
