@@ -19,7 +19,10 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@ManyToOne
+	@Column(nullable =  false)
+	private String reservadoPara;
+	
+	@ManyToOne(optional = false)
 	private Quarto quarto;
 	
 	@Column(nullable = false)
@@ -31,10 +34,11 @@ public class Reserva {
 	@Column(nullable = false)
     private LocalDate checkout;
 
-	public Reserva(Quarto quarto, LocalDate checkin, LocalDate checkout) {
+	public Reserva(String reservadoPara,Quarto quarto, LocalDate checkin, LocalDate checkout) {
 		this.quarto = quarto;
 		this.checkin = checkin;
 		this.checkout = checkout;
+		this.reservadoPara = reservadoPara;
 	}
 	
 	/**
